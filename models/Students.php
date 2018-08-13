@@ -48,6 +48,105 @@
             return $stmt;
         }
 
+        // get unregitsered students
+        public function getUnregisteredStudents(){
+            $query = "SELECT * from $this->table WHERE registered = 0";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+
+        // register student
+        public function register(){
+                $query = "INSERT INTO $this->table 
+                SET
+                    id = :id,
+                    firstName = :fname,
+                    lastName = :lname,
+                    password = :pass
+             ";
+             $stmt = $this->conn->prepare($query);
+
+            //  sanitize data
+             $this->id = htmlspecialchars(strip_tags($this->id));
+             $this->firstName = htmlspecialchars(strip_tags($this->firstName));
+             $this->lastName = htmlspecialchars(strip_tags($this->lastName));
+             $this->password = htmlspecialchars(strip_tags($this->password));
+
+            // bind parameter
+             $stmt->bindParam(':id', $this->id);
+             $stmt->bindParam(':fname', $this->firstName);
+             $stmt->bindParam(':lname', $this->lastName);
+             $stmt->bindParam(':pass', $this->password);
+
+             if($stmt->execute()){
+                 return true;
+             } else {
+                 printf("Error %s \n", $stmt->error);
+                 return false;
+             }
+        }
+
+        // Validate registeration
+        public function validateStudent(){
+            $query = "UPDATE $this->table SET registered = 1
+            WHERE id =:id ";
+
+            $stmt = $this->conn->prepare($query);
+
+            $this->id = htmlspecialchars(strip_tags($this->id)); 
+
+            $stmt->bindParam(":id", $this->id);
+
+            if($stmt->execute()){
+                return true;
+            } else {
+                printf("Error %s \n", $stmt->error);
+                return false;
+            }
+
+        }
+
+        // Delete Student
+        public function deleteStudent(){
+            $query = " DELETE FROM $this->table
+            WHERE id =:id AND registered = 0";
+
+            $stmt = $this->conn->prepare($query);
+
+            $this->id = htmlspecialchars(strip_tags($this->id)); 
+
+            $stmt->bindParam(":id", $this->id);
+
+            if($stmt->execute()){
+                return true;
+            } else {
+                printf("Error %s \n", $stmt->error);
+                return false;
+            }
+        }
+
+        // Change student password
+        public function changePassword(){
+            $query = "UPDATE $this->table SET password = :password
+            WHERE id =:id ";
+
+            $stmt = $this->conn->prepare($query);
+
+            $this->id = htmlspecialchars(strip_tags($this->id));            
+            $this->password = htmlspecialchars(strip_tags($this->password));
+
+            $stmt->bindParam(":id", $this->id);
+            $stmt->bindParam(":password", $this->password);
+
+            if($stmt->execute()){
+                return true;
+            } else {
+                printf("Error %s \n", $stmt->error);
+                return false;
+            }
+        }
+
     }
 
 

@@ -24,7 +24,8 @@ $result = $students->getStudentById();
 // Create student array
 $response = array();
 $response['data'] = array();
-$response['msg'] = 'success';
+$response['status'] = 'success';
+
 
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
@@ -48,6 +49,7 @@ if($row){
     array_push($response['data'], $data);
     
 } else {
+    $response['status'] = 'error';
     $response['msg'] = 'No Students';
 }
 

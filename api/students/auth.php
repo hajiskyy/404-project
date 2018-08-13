@@ -72,11 +72,4 @@ if($row){
 
 // Convert to JSON response
 print_r(json_encode($response));
-
-
-
-
-
-
-
 ?>
