@@ -40,7 +40,6 @@ class Tasks {
     public function create(){
         $query = "INSERT INTO $this->table 
         SET
-            id = :id,
             name = :name,
             description = :description,
             due = :due
@@ -48,16 +47,14 @@ class Tasks {
         $stmt = $this->conn->prepare($query);
 
         //  sanitize data
-        $this->id = htmlspecialchars(strip_tags($this->id));
         $this->name = htmlspecialchars(strip_tags($this->name));
         $this->description = htmlspecialchars(strip_tags($this->description));
         $this->due = htmlspecialchars(strip_tags($this->due));
 
         // bind parameter
-        $stmt->bindParam(':id', $this->id);
-        $stmt->bindParam(':fname', $this->name);
-        $stmt->bindParam(':lname', $this->description);
-        $stmt->bindParam(':pass', $this->due);
+        $stmt->bindParam(':name', $this->name);
+        $stmt->bindParam(':description', $this->description);
+        $stmt->bindParam(':due', $this->due);
 
         if($stmt->execute()){
             return true;
@@ -86,9 +83,9 @@ class Tasks {
 
         // bind parameter
         $stmt->bindParam(':id', $this->id);
-        $stmt->bindParam(':fname', $this->name);
-        $stmt->bindParam(':lname', $this->description);
-        $stmt->bindParam(':pass', $this->due);
+        $stmt->bindParam(':name', $this->name);
+        $stmt->bindParam(':description', $this->description);
+        $stmt->bindParam(':due', $this->due);
 
         if($stmt->execute()){
             return true;
