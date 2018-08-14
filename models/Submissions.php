@@ -1,5 +1,5 @@
 <?php
-class submissions {
+class Submissions {
 
     //database req
     private $conn;
