@@ -21,7 +21,7 @@ $students->id = $data->id;
 if(checkStudent($students->id, $students)){
     if($students->deleteStudent()){
         echo json_encode(array(
-            "status" => "success",
+            "status" => "ok",
             "msg" => "Student Removed"
         ));
     } else {

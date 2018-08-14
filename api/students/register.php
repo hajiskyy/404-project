@@ -22,10 +22,10 @@ $students->lastName = $data->lastName;
 $students->password = $data->password;
 
 //check if already registered
-if(checkStudent($students->id, $students)){
+if(checkStudent($students->id, $conn)){
     if($students->register()){
         echo json_encode(array(
-            "status" => "success",
+            "status" => "ok",
             "msg" => "Student Registered"
         ));
     } else {
@@ -43,9 +43,15 @@ if(checkStudent($students->id, $students)){
 
 
 // check if student is already registered
- function checkStudent($id, $table){
-    $result =  $table->getStudentById($id);
+ function checkStudent($id, $conn){
+     //initialize student class
+    $student = new Students($conn);
+    // get student by id
+    $student->id = $id;
+    $result =  $student->getStudentById();
+
      $row = $result->fetch(PDO::FETCH_ASSOC);
+     
      if($row){
          return false;
      } else {

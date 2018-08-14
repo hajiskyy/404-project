@@ -19,7 +19,7 @@ $students->id = $data->id;
 
 if($students->validateStudent()){
     echo json_encode(array(
-        "status" => "success",
+        "status" => "ok",
         "msg" => "Student Validated"
     ));
 } else {

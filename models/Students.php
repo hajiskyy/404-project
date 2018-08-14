@@ -40,6 +40,28 @@
             return $stmt;
         }
 
+        //set an advisor
+        public function setAdvisor(){
+            $query = "UPDATE $this->table SET advisor_id = :advisor
+                WHERE id = :id
+            ";
+
+            $stmt = $this->conn->prepare($query);
+
+            $this->id = htmlspecialchars(strip_tags($this->id));            
+            $this->password = htmlspecialchars(strip_tags($this->advisorId));
+
+            $stmt->bindParam(":id", $this->id);
+            $stmt->bindParam(":advisor", $this->advisorId);
+
+            if($stmt->execute()){
+                return true;
+            } else {
+                printf("Error %s \n", $stmt->error);
+                return false;
+            }
+        }
+
         // Get All Students
         public function getAllStudents(){
             $query = "SELECT * from $this->table";

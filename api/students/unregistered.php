@@ -24,7 +24,7 @@ if($num > 0){
     // Create student array
     $response = array();
     $response['data'] = array();
-    $response['status'] = 'success';
+    $response['status'] = 'ok';
 
     while($row = $result->fetch(PDO::FETCH_ASSOC)){
 

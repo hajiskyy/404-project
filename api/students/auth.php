@@ -37,7 +37,7 @@ if($row){
     $students->advisorId = $row['advisor_id'];
     $students->password = $row['password'];
     $students->registered = $row['registered'];
-    echo $students->registered;
+
 
     //If students is not registered
     if($students->registered == 1){
@@ -50,7 +50,7 @@ if($row){
                 'name' => $students->firstName+ ""+$students->lastName,
                 'Token' => md5(uniqid(rand(), true))
             );
-        
+            
             //push to data
             array_push($response['data'], $data);
 

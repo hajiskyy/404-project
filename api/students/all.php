@@ -19,12 +19,12 @@ $result = $students->getAllStudents();
 //get row count
 $num = $result->rowCount();
 
-//check post exists
+//check if student exists
 if($num > 0){
     // Create student array
     $response = array();
     $response['data'] = array();
-    $response['msg'] = 'success';
+    $response['status'] = 'ok';
 
     while($row = $result->fetch(PDO::FETCH_ASSOC)){
 
@@ -45,7 +45,7 @@ if($num > 0){
     // Convert to JSON
     echo json_encode($response);
 } else {
-    echo json_encode(array('msg'=> 'No Students'));
+    echo json_encode(array('status' => 'error','msg'=> 'No Students'));
 }
 
 ?>

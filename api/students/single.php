@@ -24,7 +24,7 @@ $result = $students->getStudentById();
 // Create student array
 $response = array();
 $response['data'] = array();
-$response['status'] = 'success';
+$response['status'] = 'ok';
 
 
 $row = $result->fetch(PDO::FETCH_ASSOC);
