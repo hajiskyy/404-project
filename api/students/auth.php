@@ -47,7 +47,7 @@ if($row){
             $response['data'] = array();
             $data = array(
                 'id' => $students->id,
-                'name' => $students->firstName+ ""+$students->lastName,
+                'name' => "$students->firstName $students->lastName",
                 'Token' => md5(uniqid(rand(), true))
             );
             
