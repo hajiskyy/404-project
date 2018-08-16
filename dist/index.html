@@ -69,9 +69,21 @@
         </footer>
     </section>
 </body>
+<script src="./js/models/guard.js"></script>
+
+<script>
+    // init guard
+    const guard = new Guard();
+    if (guard.studentAuth()) {
+        // redirect to home page
+        parent.window.location.href = "./student/home.html";
+    } 
+</script>
+
 <script src="./js/ui.js"></script>
 <script src="./js/models/api.js"></script>
 <script src="./js/models/studentUi.js"></script>
 <script src="./js/login.js"></script>
+
 
 </html>

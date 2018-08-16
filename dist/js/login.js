@@ -1,10 +1,10 @@
 // initialize dom variables
-const form = document.querySelector("#login");
+const login = document.querySelector("#login");
 const usernameInput = document.querySelector("#username");
 const passwordInput = document.querySelector("#password");
 
 // submit Event Listener
-form.addEventListener("submit", e => {
+login.addEventListener("submit", e => {
   e.preventDefault();
   Authenticate();
 });
@@ -21,13 +21,20 @@ function Authenticate() {
   let password = passwordInput.value;
   api.Login(username, password, data => {
     if (data.status == "error") {
-        ui.displayError(data.msg);
-      } else {
-        ui.dispalySeccess(data.msg);
+      ui.displayError(data.msg);
+    } else {
+      ui.dispalySeccess(data.msg);
+      //get student data
+      let student = {};
+      student = {
+        ...data.data[0]
+      };
 
-        //Store login token
-        localStorage.setItem("token", data.token)
-        parent.window.location.href = "./student/home.html";
-      }
+      // Store login token
+      localStorage.setItem("student_auth", JSON.stringify(student));
+
+      // redirect to home page
+      parent.window.location.href = "./student/home.html";
+    }
   });
 }
