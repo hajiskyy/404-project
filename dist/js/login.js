@@ -24,7 +24,10 @@ function Authenticate() {
         ui.displayError(data.msg);
       } else {
         ui.dispalySeccess(data.msg);
-        console.log(data);
+
+        //Store login token
+        localStorage.setItem("token", data.token)
+        parent.window.location.href = "./student/home.html";
       }
   });
 }

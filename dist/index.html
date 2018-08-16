@@ -1,26 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Login</title>
 </head>
+
 <body>
-    <div id="msg"></div>
-    <div class="form-card">
-        <form id="login">
-            User Name
-            <input type="text" name="username" id="username" required>
-            <br />
-            Password
-            <input type="password" name="password" id="password" required>
-            <br />
-            <button id="btn-login" type="submit">submit</button>
-        </form>
-    </div>
+    <section id="page">
+        <nav>
+            <div id="menu" class="sideNav-menu">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <a href="#" class="nav-logo">SCT Projects</a>
+            <ul>
+                <li>
+                    <a class="nav-link current" href="#">Login</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#">Register</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#">Staffs</a>
+                </li>
+            </ul>
+        </nav>
+        <main>
+            <!-- side nav -->
+            <div class="side">
+                <div id="sidenav" class="side-nav">
+                    <li>
+                        <a class="sidenav-link current" href="#">Login</a>
+                    </li>
+                    <li>
+                        <a class="sidenav-link" href="#">Register</a>
+                    </li>
+                    <li>
+                        <a class="sidenav-link" href="#">Staffs</a>
+                    </li>
+                </div>
+            </div>
+            <!-- Main content -->
+            <div class="main">
+                <div id="msg" class="msg"></div>
+                <div class="form-card">
+                    <h1 class="title">Login</h1>
+                    <form id="login">
+                        <div class="input-area">
+                            <input type="text" name="student" id="username" placeholder="Student id" required>
+                        </div>
+                        <div class="input-area">
+                            <input type="password" name="password" id="password" placeholder="Password" required>
+                        </div>
+                        <br />
+                        <button id="btn-login" type="submit" class="btn">submit</button>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+        <footer>
+            &copy; hajisky
+        </footer>
+    </section>
 </body>
+<script src="./js/ui.js"></script>
 <script src="./js/models/api.js"></script>
-<script src="./js/models/student.js"></script>
+<script src="./js/models/studentUi.js"></script>
 <script src="./js/login.js"></script>
+
 </html>
