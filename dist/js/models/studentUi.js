@@ -29,9 +29,11 @@ class studentUI {
   putTasks(tasks) {
     tasks.forEach((task, index) => {
       let list = document.createElement("li");
+      list.classList.add("collection-item");
       list.innerHTML = `
-          name: ${task.name} due: ${task.due}
-          <span class="secondary-item"><button>submit</button></span>
+          <span> ${task.name}</span>
+          <span> due: ${task.due}</span>
+          <span class="secondary-item"><button class="btn">submit</button></span>
         `;
       this.taskCollection.appendChild(list);
     });

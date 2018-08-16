@@ -20,13 +20,13 @@
             <a href="#" class="nav-logo">SCT Projects</a>
             <ul>
                 <li>
-                    <a class="nav-link current" href="#">Login</a>
+                    <a class="nav-link current" href="#">Home</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="#">Register</a>
+                    <a class="nav-link" href="#">Profile</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="#">Staffs</a>
+                    <a id="logOut" class="nav-link" href="#">Log Out</a>
                 </li>
             </ul>
         </nav>
@@ -35,22 +35,27 @@
             <div class="side">
                 <div id="sidenav" class="side-nav">
                     <li>
-                        <a class="sidenav-link current" href="#">Login</a>
+                        <a class="sidenav-link current" href="#">Home</a>
                     </li>
                     <li>
-                        <a class="sidenav-link" href="#">Register</a>
+                        <a class="sidenav-link" href="#">Profile</a>
                     </li>
                     <li>
-                        <a class="sidenav-link" href="#">Staffs</a>
+                        <a id="logOut" class="sidenav-link" href="#">Log out</a>
                     </li>
                 </div>
             </div>
             <div class="main">
                 <div id="msg" class="msg"></div>
                 <h2 class="title">Tasks</h2>
-                <ul id="task-collection">
-
-                </ul>
+                <div class="container">
+                    <div id="task-collection" class="collection">
+                        <li class="collection-header">
+                            <span>name</span>
+                            <span>due date</span>
+                        </li>
+                    </div>
+                </div>
             </div>
         </main>
         <footer>
@@ -59,6 +64,15 @@
     </section>
 
 </body>
+<script src="../js/models/guard.js"></script>
+<script>
+    //init guard
+    const guard = new Guard;
+    if (!guard.studentAuth()) {
+        // redirect to home page
+        parent.window.location.href = "../index.html";
+    } 
+</script>
 <script src="../js/ui.js"></script>
 <script src="../js/models/studentUi.js"></script>
 <script src="../js/models/api.js"></script>

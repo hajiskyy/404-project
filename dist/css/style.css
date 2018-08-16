@@ -149,6 +149,42 @@
     border: 1px solid rgba(5, 255, 118, 0.952);
     color: #fff;
   }
+
+  .container {
+    max-width: 80%;
+    min-width: 360px;
+    margin: auto;
+    /* border: 1px solid black; */
+    position: relative;
+  }
+  .collection{
+    max-width: 1000px;
+    min-width: 320px;
+    /* border: 1px solid black; */
+    margin: auto;
+  }
+  .collection-header{
+    max-width: 1000px;
+    min-width: 320px;
+    font-size: 20px;
+    font-style: oblique;
+    text-transform: uppercase;
+    height: 30px;
+    list-style: none;
+    padding: 20px 20px;
+    border: 1px solid black;
+  }
+  .collection-item {
+    max-width: 1000px;
+    min-width: 320px;
+    height: 30px;
+    list-style: none;
+    padding: 20px 20px;
+    border: 1px solid black;
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: repeat(3, 1fr);
+  }
   
   footer {
     grid-area: footer;
@@ -228,9 +264,8 @@
   .sidenav-link.current {
     background: #e2dcdc;
   }
-  
-  
-  /* responsive screen */
+
+  /* responsive screens */
   @media only screen and (max-width: 591px){
     main {
       display: unset;
