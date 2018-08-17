@@ -31,9 +31,10 @@ class studentUI {
       let list = document.createElement("li");
       list.classList.add("collection-item");
       list.innerHTML = `
-          <span> ${task.name}</span>
-          <span> due: ${task.due}</span>
-          <span class="secondary-item"><button class="btn">submit</button></span>
+          <span><h4>Name</h4>${task.name}</span>
+          <span><h4>due date</h4> ${task.due}</span>
+          <span><h4>description</h4> ${task.description}</span>
+          <span class="secondary-content"><button id="${task.id}"class="btn">submit</button></span>
         `;
       this.taskCollection.appendChild(list);
     });
