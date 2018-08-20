@@ -39,4 +39,10 @@ class Guard {
       return false;
     }
   }
+
+  //get student id
+  getStudentId(){
+    const student = JSON.parse(localStorage.getItem("student_auth"))
+    return student.id;
+  }
 }

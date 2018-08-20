@@ -113,6 +113,8 @@ input:focus {
 .btn:hover {
   cursor: pointer;
   z-index: 2;
+  transition: ease-in-out 0.3s;
+  background: rgba(8, 151, 8, 0.5);
 }
 .red {
   background: rgba(255, 4, 4, 0.904);
@@ -122,6 +124,15 @@ input:focus {
 }
 .blue {
   background: #6e33cc;
+}
+.btn.red:hover{
+  background: rgba(255, 4, 4, 0.514);
+}
+.btn.blue:hover {
+  background: #6e33cc70;
+}
+.btn.info:hover {
+  background: #d6b936a9;
 }
 .title {
   font-size: 40px;

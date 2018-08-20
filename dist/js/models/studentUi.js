@@ -13,7 +13,7 @@ class studentUI {
   }
 
   // Display Success Message
-  dispalySeccess(msg) {
+  dispalySuccess(msg) {
     this.notification.innerHTML = msg;
     this.notification.classList.add("show", "success");
     this.clearNotifications();
@@ -34,7 +34,10 @@ class studentUI {
           <span><h4>Name</h4>${task.name}</span>
           <span><h4>due date</h4> ${task.due}</span>
           <span><h4>description</h4> ${task.description}</span>
-          <span class="secondary-content"><button id="${task.id}"class="btn">submit</button></span>
+          <span class="secondary-content">
+            <input type="file" id="file${task.id}" style="display: none;" accept=".docx, .pdf, .jpeg, .jpg, .png" />
+            <button class="btn" onclick="document.querySelector('#file${task.id}').click()" >submit</button>
+          </span>
         `;
       this.taskCollection.appendChild(list);
     });
