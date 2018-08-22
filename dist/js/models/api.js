@@ -20,12 +20,12 @@ class Api {
   async staffLogin(username, password, callback) {}
 
   // get tasks
-  async getTasks(callback) {
+  async getTasks() {
     const url = "http://localhost/404/api/tasks/all.php";
     // fetch tasks
     let res = await fetch(url);
     let data = await res.json();
-    callback(data);
+    return data;
   }
 
   // get single task
@@ -40,15 +40,33 @@ class Api {
   // upload submission
   async uploadSubmission(formData) {
     const url = "http://localhost/404/api/submissions/create.php";
-    let res = await fetch(url, { method: "post", body: formData, redirect: "error" });
+    let res = await fetch(url, {
+      method: "post",
+      body: formData,
+      redirect: "error"
+    });
 
     let data = await res.json();
-    const ui = new studentUI();
-    // display message
-    if(data.status == "error"){
-      this.ui.displayError(data.msg);
-    } else {
-      this.ui.dispalySuccess(data.msg);
-    } 
+    return data;
+  }
+  async uploadResubmission(formData) {
+    const url = "http://localhost/404/api/submissions/update.php";
+    let res = await fetch(url, {
+      method: "post",
+      body: formData,
+      redirect: "error"
+    });
+
+    let data = await res.json();
+    return data;
+  }
+
+  // get submitted tasks
+  async getSubmittedTask(id) {
+    const url = `http://localhost/404/api/submissions/IdSingle.php?id=${id}`;
+    // fetch submitted tasks
+    let res = await fetch(url);
+    let data = await res.json();
+    return data;
   }
 }

@@ -4,6 +4,9 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   overflow-x: hidden;
 }
+html {
+  overflow: hidden;
+}
 #page {
   display: grid;
   width: 100%;
@@ -74,6 +77,7 @@ nav .nav-logo {
 
 #page > main {
   grid-area: main;
+  /* overflow: hidden; */
 }
 
 .form-card {
@@ -196,7 +200,7 @@ input:focus {
   padding: 20px 20px;
   border: 1px solid rgb(172, 166, 166);
   display: grid;
-  grid-template-rows: 50px;
+  grid-template-rows: 60px;
   grid-template-columns: repeat(4, 1fr);
   overflow: hidden;
 }

@@ -18,14 +18,24 @@ function Init() {
   // initialize dependencies
   const ui = new studentUI();
   const api = new Api();
-
+  const guard = new Guard();
   //get task
-  api.getTasks(tasks => {
-    //display tasks
-    ui.putTasks(tasks.data);
-    //set button click events
-    fileEvents();
-  });
+  api
+    .getTasks()
+    .then(tasks => {
+      //get submitted tasks
+      let student_id = guard.getStudentId();
+      api
+        .getSubmittedTask(student_id)
+        .then(submitted => {
+          //display tasks
+          ui.putTasks(tasks.data, submitted.data);
+          //set button click events
+          fileEvents();
+        })
+        .catch(err => console.log(err));
+    })
+    .catch(err => console.log(err));
 }
 
 // FUNCTIONS
@@ -80,9 +90,38 @@ function onSubmit(e) {
       // get task name
       let task_name = data.data[0].name;
       formData.append("task_name", task_name);
-      
-      // upload data
-      api.uploadSubmission(formData);
+
+      //get state of submission
+      let state = e.target.id.replace(/[0-9]/g, "");
+
+      const ui = new studentUI();
+
+      // if state is submit
+      if (state == "submit") {
+        api
+          .uploadSubmission(formData)
+          .then(res => {
+            // display message
+            if (res.status == "error") {
+              ui.displayError(res.msg);
+            } else {
+              ui.dispalySuccess(res.msg);
+            }
+          })
+          .catch(err => console.log(err));
+      } else {
+        api
+          .uploadResubmission(formData)
+          .then(res => {
+            // display message
+            if (res.status == "error") {
+              ui.displayError(res.msg);
+            } else {
+              ui.dispalySuccess(res.msg);
+            }
+          })
+          .catch(err => console.log(err));
+      }
     })
     .catch(err => console.log(err));
 }
