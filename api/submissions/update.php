@@ -19,45 +19,65 @@ $taskId = $_POST['task_id'];
 $taskName = $_POST['task_name'];
 $stdId = $_POST['student_id'];
 
-$file_name = basename($_FILES['file']['name']);
-$file_loc = $_FILES['file']['tmp_name'];
-$file_size = $_FILES['file']['size'];
-$file_type = $_FILES['file']['type'];
+//create response array
+$response = array();
 
-//set folder path
-$path="uploads/$stdId/$taskName/";
+// get previous submission
+$submissions->taskId = $taskId;
+$submissions->studentId = $stdId;
+$result = $submissions->getSingle();
+$row = $result->fetch(PDO::FETCH_ASSOC);
 
-//   Create path
-if(!is_dir($path)){
- mkdir("../../$path",0777,true);
-}
+if($row){
+    $submissions->id = $row['id'];
+    $submissions->studentId = $row['student_id'];
+    $submissions->taskId = $row['task_id'];
+    $submissions->path = $row['path'];
+    $submissions->fileName = $row['filename'];
+    
+    //get file details
+    $file_name = basename($_FILES['file']['name']);
+    $file_loc = $_FILES['file']['tmp_name'];
+    $file_size = $_FILES['file']['size'];
+    $file_type = $_FILES['file']['type'];
 
-//upload the file
-if(move_uploaded_file($file_loc,"../../$path.$file_name")){
-    // set origin path
-    $path = $path.$file_name;
+    //set folder path
+    $path = $submissions->path;
 
-    // upload file submission details
-    $submissions->taskId = $taskId;
-    $submissions->studentId = $stdId;
-    $submissions->fileName = $file_name;
-    $submissions->path = $path;
-    if($submissions->update()){
-            echo json_encode(array(
-                "status" => "ok",
-                "msg" => "resubmission successfull"
-            ));
-        } else {
-            echo json_encode(array(
-                "status" => "error",
-                "msg" => "Something went Wrong"
-            ));
-        }
+    //   Create path
+    if(file_exists("../../$path") != false){
+        unlink("../../$path");
+    } 
+
+    $path="uploads/$stdId/$taskName/";
+
+    //upload the file
+    if(move_uploaded_file($file_loc,"../../$path$file_name")){
+            // upload file submission details
+            if($submissions->update()){
+                echo json_encode(array(
+                    "status" => "ok",
+                    "msg" => "re submission successfull"
+                ));
+            } else {
+                echo json_encode(array(
+                    "status" => "error",
+                    "msg" => "Something went Wrong"
+                ));
+            }
+
+    } else {
+        echo json_encode(array(
+            "status" => "error",
+            "msg" => "Upload Error"
+        ));
+    }
+    
 } else {
-    echo json_encode(array(
-        "status" => "error",
-        "msg" => "Upload Error"
-    ));
+    $response['status'] = 'error';
+    $response['msg'] = 'No submissions';
+    // / Convert to JSON
+    echo json_encode($response);
 }
 
 ?>

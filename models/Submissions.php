@@ -25,13 +25,35 @@ class Submissions {
         return $stmt;
     }
 
-    //get a single task
-    public function getSingle(){
+    //get a student submission
+    public function getStudentSubmission(){
         $query = "SELECT * from $this->table WHERE student_id = ?";
         $stmt = $this->conn->prepare($query);
 
         // Bind Id
         $stmt->bindParam(1, $this->studentId);
+        $stmt->execute();
+
+        return $stmt;
+    }
+
+    // get single submissions
+    public function getSingle(){
+        $query = "SELECT * from $this->table 
+        WHERE 
+        student_id = :student_id
+        AND
+        task_id = :task_id
+        ";
+        $stmt = $this->conn->prepare($query);
+
+        // Bind Id
+        $stmt->bindParam(":student_id", $this->studentId);
+        $stmt->bindParam(":task_id", $this->taskId);
+
+        $this->taskId = htmlspecialchars(strip_tags($this->taskId));
+        $this->studentId = htmlspecialchars(strip_tags($this->studentId));
+
         $stmt->execute();
 
         return $stmt;
