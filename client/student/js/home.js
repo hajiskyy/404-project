@@ -1,5 +1,4 @@
 // init dom varialble
-
 // log out buttons
 const logOutButtons = document.querySelectorAll("#logOut");
 
@@ -10,7 +9,6 @@ document.addEventListener("DOMContentLoaded", Init);
 logOutButtons.forEach(logOutBtn => {
   logOutBtn.addEventListener("click", e => {
     e.preventDefault();
-    logOut();
   });
 });
 
@@ -30,8 +28,6 @@ function Init() {
         .then(submitted => {
           //display tasks
           ui.putTasks(tasks.data, submitted.data);
-          //set button click events
-          fileEvents();
         })
         .catch(err => console.log(err));
     })
@@ -47,18 +43,6 @@ function logOut() {
 
   //redirect to login
   parent.window.location.href = "../index.html";
-}
-
-//buttons events
-function fileEvents() {
-  // button
-  const submitButtons = document.querySelectorAll("[type=file]");
-  // foreach collection-item
-  submitButtons.forEach(btn => {
-    btn.addEventListener("change", e => {
-      onSubmit(e);
-    });
-  });
 }
 
 //on submit

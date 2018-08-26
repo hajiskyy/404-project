@@ -23,7 +23,7 @@ function Authenticate() {
     if (data.status == "error") {
       ui.displayError(data.msg);
     } else {
-      ui.dispalySeccess(data.msg);
+      ui.dispalySuccess(data.msg);
       //get student data
       let student = {};
       student = {

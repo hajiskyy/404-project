@@ -6,7 +6,7 @@ class Api {
   }
 
   async Login(username, password, callback) {
-    const url = `http://localhost/404/api/students/auth.php?id=${username}&password=${password}`;
+    const url = `http://localhost/404/server/api/students/auth.php?id=${username}&password=${password}`;
 
     // Send Login details
     let res = await fetch(url);
@@ -21,7 +21,7 @@ class Api {
 
   // get tasks
   async getTasks() {
-    const url = "http://localhost/404/api/tasks/all.php";
+    const url = "http://localhost/404/server/api/tasks/all.php";
     // fetch tasks
     let res = await fetch(url);
     let data = await res.json();
@@ -30,7 +30,7 @@ class Api {
 
   // get single task
   async getSingleTask(id) {
-    const url = `http://localhost/404/api/tasks/single.php?id=${id}`;
+    const url = `http://localhost/404/server/api/tasks/single.php?id=${id}`;
     // fetch tasks
     let res = await fetch(url);
     let data = await res.json();
@@ -39,7 +39,7 @@ class Api {
 
   // upload submission
   async uploadSubmission(formData) {
-    const url = "http://localhost/404/api/submissions/create.php";
+    const url = "http://localhost/404/server/api/submissions/create.php";
     let res = await fetch(url, {
       method: "post",
       body: formData,
@@ -50,7 +50,7 @@ class Api {
     return data;
   }
   async uploadResubmission(formData) {
-    const url = "http://localhost/404/api/submissions/update.php";
+    const url = "http://localhost/404/server/api/submissions/update.php";
     let res = await fetch(url, {
       method: "post",
       body: formData,
@@ -63,7 +63,7 @@ class Api {
 
   // get submitted tasks
   async getSubmittedTask(id) {
-    const url = `http://localhost/404/api/submissions/IdSingle.php?id=${id}`;
+    const url = `http://localhost/404/server/api/submissions/IdSingle.php?id=${id}`;
     // fetch submitted tasks
     let res = await fetch(url);
     let data = await res.json();

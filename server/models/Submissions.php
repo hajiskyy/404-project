@@ -27,11 +27,13 @@ class Submissions {
 
     //get a student submission
     public function getStudentSubmission(){
-        $query = "SELECT * from $this->table WHERE student_id = ?";
+        $query = "SELECT * from $this->table WHERE student_id = :id";
         $stmt = $this->conn->prepare($query);
 
         // Bind Id
-        $stmt->bindParam(1, $this->studentId);
+        // Bind Id
+        $stmt->bindParam(":id", $this->studentId);
+        $this->studentId = htmlspecialchars(strip_tags($this->studentId));
         $stmt->execute();
 
         return $stmt;
