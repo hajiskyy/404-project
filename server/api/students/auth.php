@@ -62,7 +62,7 @@ if($row){
     } else {
 
         $response['status'] = 'error';
-        $response['msg'] = 'Student is not Registered';
+        $response['msg'] = 'Registeration has not been confirmed yet';
     }
 } else {
 

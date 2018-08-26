@@ -13,8 +13,16 @@ class Api {
     let data = await res.json();
     callback(data);
   }
+
   // student register
-  async Register(user, callback) {}
+  async Register(user) {
+    const url = 'http://localhost/404/server/api/students/register.php';
+
+    let res = await fetch(url,{method: "POST", body: JSON.stringify(user)});
+    let data = await res.json()
+
+    return data;
+  }
 
   //staff login
   async staffLogin(username, password, callback) {}

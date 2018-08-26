@@ -49,8 +49,14 @@
             <div class="main">
                 <div id="msg" class="msg"></div>
                 <div class="form-card">
-                    <h1 class="title">Login</h1>
-                    <form id="login">
+                    <h1 class="title">Register</h1>
+                    <form id="register">
+                        <div class="input-area">
+                            <input type="text" name="fname" id="fname" placeholder="First Name" required>
+                        </div>
+                        <div class="input-area">
+                            <input type="text" name="lname" id="lname" placeholder="Last Name" required>
+                        </div>
                         <div class="input-area">
                             <input type="text" name="student" id="username" placeholder="Student id" required>
                         </div>
@@ -74,16 +80,12 @@
 <script>
     // init guard
     const guard = new Guard();
-    if (guard.studentAuth()) {
-        // redirect to home page
-        parent.window.location.href = "./student/home.html";
-    } 
 </script>
 
 <script src="./js/ui.js"></script>
 <script src="./js/models/api.js"></script>
 <script src="./js/models/studentUi.js"></script>
-<script src="./js/login.js"></script>
+<script src="./js/auth.js"></script>
 
 
 </html>
