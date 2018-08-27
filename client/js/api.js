@@ -25,7 +25,14 @@ class Api {
   }
 
   //staff login
-  async staffLogin(username, password, callback) {}
+  async staffLogin(username, password) {
+    const url = `http://localhost/404/server/api/staffs/auth.php?id=${username}&password=${password}`;
+
+    // Send Login details
+    let res = await fetch(url);
+    let data = await res.json();
+    return data;
+  }
 
   // get tasks
   async getTasks() {

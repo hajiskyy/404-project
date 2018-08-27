@@ -5,7 +5,7 @@ class Guard {
       ? JSON.parse(localStorage.getItem("student_auth"))
       : false;
 
-    this.committee = localStorage.getItem("commiteee_auth")
+    this.committee = localStorage.getItem("committee_auth")
       ? JSON.parse(localStorage.getItem("committee_auth"))
       : false;
     this.head = localStorage.getItem("head_auth")
@@ -41,8 +41,20 @@ class Guard {
   }
 
   //get student id
-  getStudentId(){
-    const student = JSON.parse(localStorage.getItem("student_auth"))
+  getStudentId() {
+    const student = JSON.parse(localStorage.getItem("student_auth"));
     return student.id;
+  }
+
+  //get head id
+  getHeadId() {
+    const head = JSON.parse(localStorage.getItem("head_auth"));
+    return head.id;
+  }
+
+  //get staff id
+  getstaffId() {
+    const staff = JSON.parse(localStorage.getItem("staff_auth"));
+    return staff.id;
   }
 }

@@ -13,8 +13,8 @@ logOutButtons.forEach(logOutBtn => {
 });
 
 function Init() {
-  // initialize dependencies
-  const ui = new studentUI();
+  // initialize classes
+  const stdUi = new studentUI();
   const api = new Api();
   const guard = new Guard();
   //get task
@@ -27,7 +27,7 @@ function Init() {
         .getSubmittedTask(student_id)
         .then(submitted => {
           //display tasks
-          ui.putTasks(tasks.data, submitted.data);
+          stdUi.putTasks(tasks.data, submitted.data);
         })
         .catch(err => console.log(err));
     })
@@ -78,7 +78,7 @@ function onSubmit(e) {
       //get state of submission
       let state = e.target.id.replace(/[0-9]/g, "");
 
-      const ui = new studentUI();
+      const ui = new UI();
 
       // if state is submit
       if (state == "submit") {
