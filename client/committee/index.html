@@ -73,12 +73,13 @@
 <script>
     // init guard
     const guard = new Guard();
+    console.log(guard.committeeAuth())
     if (guard.committeeAuth()) {
         // redirect to home page
-        parent.window.location.href = "./staff/home.html";
+        parent.window.location.href = "./staff";
     }
     if (guard.headAuth()) {
-        parent.window.location.href = "./head/home.html";
+        parent.window.location.href = "./head";
     }
 </script>
 <script src="../js/ui.js"></script>
