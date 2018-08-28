@@ -1,17 +1,6 @@
-// init dom varialble
-// log out buttons
-const logOutButtons = document.querySelectorAll("#logOut");
-
 // on load
 document.addEventListener("DOMContentLoaded", Init);
-
-// for each log out buttons
-logOutButtons.forEach(logOutBtn => {
-  logOutBtn.addEventListener("click", e => {
-    e.preventDefault();
-  });
-});
-
+// init 
 function Init() {
   // initialize classes
   const stdUi = new studentUI();
@@ -35,16 +24,6 @@ function Init() {
 }
 
 // FUNCTIONS
-
-//log out functions
-function logOut() {
-  //clear localstorage
-  localStorage.clear();
-
-  //redirect to login
-  parent.window.location.href = "../index.html";
-}
-
 //on submit
 function onSubmit(e) {
   e.preventDefault();

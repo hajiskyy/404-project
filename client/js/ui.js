@@ -1,8 +1,33 @@
+// init dom varialble
+
+// log out buttons
+const logOutButtons = document.querySelectorAll("#logOut");
+//menu buttons
 const menuBtn = document.querySelector("#menu");
+//side nav
 const sideNav = document.querySelector("#sidenav");
 
-let revealed = false;
+// for each log out buttons
+if(logOutButtons){
+  logOutButtons.forEach(logOutBtn => {
+    logOutBtn.addEventListener("click", e => {
+      e.preventDefault();
+    });
+  });
+  
+}
 
+//log out functions
+function logOut() {
+  //clear localstorage
+  localStorage.clear();
+
+  //redirect to login
+  parent.window.location.href = "../index.html";
+}
+
+// menu button click and side nav
+let revealed = false;
 menuBtn.addEventListener("click", () => {
   if(!revealed){
     sideNav.classList.add("reveal");
