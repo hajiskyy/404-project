@@ -92,4 +92,20 @@ class Api {
     let data = await res.json();
     return data;
   }
+
+  async acceptStudent(id){
+    const url = 'http://localhost/404/server/api/students/validate.php';
+    // fetch data tasks
+    let res = await fetch(url, {method: "PUT", body: JSON.stringify({id: id}) });
+    let data = await res.json();
+    return data;
+  }
+
+  async deleteStudent(id) {
+    const url = 'http://localhost/404/server/api/students/delete.php';
+    // fetch data tasks
+    let res = await fetch(url, {method: "DELETE", body: JSON.stringify({id: id}) });
+    let data = await res.json();
+    return data;
+  }
 }
