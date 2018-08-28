@@ -57,4 +57,19 @@ class Guard {
     const staff = JSON.parse(localStorage.getItem("staff_auth"));
     return staff.id;
   }
+  // get student Name
+  getStudentName(){
+    const student = JSON.parse(localStorage.getItem("student_auth"));
+    return student.name;
+  }
+  // Get Head Name
+  getHeadName(){
+    const head = JSON.parse(localStorage.getItem("head_auth"));
+    return head.name;
+  }
+  // Get Staff Name
+  getStaffName(){
+    const staff = JSON.parse(localStorage.getItem("staff_auth"));
+    return staff.name;
+  }
 }

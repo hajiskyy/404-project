@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#6e33cc">
     <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <title>Home</title>
+    <title>Requests</title>
 </head>
 
 <body>
@@ -22,16 +20,13 @@
             <a href="#" class="nav-logo">SCT Projects</a>
             <ul>
                 <li>
-                    <a class="nav-link current" href="./index.html">Home</a>
+                    <a class="nav-link" href="./index.html">Home</a>
                 </li>
                 <li>
                     <a class="nav-link" href="./requests.html">Student Requests</a>
                 </li>
                 <li>
                     <a class="nav-link current" href="./add.html">Create Accounts</a>
-                </li>
-                <li>
-                    <a id="logOut" class="nav-link" href="#" onclick="logOut()">Log out</a>
                 </li>
             </ul>
         </nav>
@@ -40,36 +35,20 @@
             <div class="side">
                 <div id="sidenav" class="side-nav">
                     <li>
-                        <a class="sidenav-link current" href="./index.html">Home</a>
+                        <a class="sidenav-link" href="./index.html">Home</a>
                     </li>
                     <li>
                         <a class="sidenav-link" href="./requests.html">Student Requests</a>
                     </li>
                     <li>
-                        <a class="sidenav-link" href="./add.html">Create Accounts</a>
-                    </li>
-                    <li>
-                        <a id="logOut" class="sidenav-link" href="#" onclick="logOut()">Log out</a>
+                        <a class="sidenav-link current" href="./add.html">Create Accounts</a>
                     </li>
                 </div>
             </div>
             <!-- Main content -->
             <div class="main">
                 <div id="msg" class="msg"></div>
-                <h5 id="displayName"></h5>
-                <div id="section">
-                    <h3 class="title">View Student Register Requests</h3>
-                    <div class="center">
-                        <a href="./requests.html" class="btn info center-item ">Register Requests</a>
-                    </div>
-                </div>
-                <div id="section">
-                    <h3 class="title">Create Staff Accounts</h3>
-                    <div class="center">
-                        <a href="./add" class="btn center-item">Create Account</a>
-                    </div>
-                </div>
-
+                <h3 class="title">Staff Accounts</h3>
             </div>
         </main>
         <footer>
@@ -88,6 +67,4 @@
 </script>
 <script src="../../js/api.js"></script>
 <script src="../../js/ui.js"></script>
-<script src="./js/index.js"></script>
-
 </html>

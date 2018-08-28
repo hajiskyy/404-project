@@ -2,7 +2,6 @@ class Api {
   constructor() {
     this.getHeaders = { "Content-Type": "application/json" };
     this.formHeaders = { "Content-Type": "multipart/form-data" };
-    this.ui = new studentUI();
   }
 
   async Login(username, password, callback) {
@@ -80,6 +79,15 @@ class Api {
   async getSubmittedTask(id) {
     const url = `http://localhost/404/server/api/submissions/IdSingle.php?id=${id}`;
     // fetch submitted tasks
+    let res = await fetch(url);
+    let data = await res.json();
+    return data;
+  }
+
+  // get unregistered students
+  async getUnregistered(){
+    const url = 'http://localhost/404/server/api/students/unregistered.php';
+    // fetch data tasks
     let res = await fetch(url);
     let data = await res.json();
     return data;
