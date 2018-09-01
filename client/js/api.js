@@ -93,6 +93,7 @@ class Api {
     return data;
   }
 
+  //accept student registeration
   async acceptStudent(id){
     const url = 'http://localhost/404/server/api/students/validate.php';
     // fetch data tasks
@@ -101,6 +102,7 @@ class Api {
     return data;
   }
 
+  //delete student
   async deleteStudent(id) {
     const url = 'http://localhost/404/server/api/students/delete.php';
     // fetch data tasks
@@ -108,4 +110,14 @@ class Api {
     let data = await res.json();
     return data;
   }
+
+  //create Staff account
+  async createStaffAccounts(account){
+    const url = 'http://localhost/404/server/api/staffs/create.php';
+    // send request
+    let res = await fetch(url, {method: "POST", body: JSON.stringify({...account}) });
+    let data = await res.json();
+    return data;
+  }
+
 }

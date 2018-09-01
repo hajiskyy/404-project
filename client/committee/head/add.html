@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#6e33cc">
     <link rel="stylesheet" href="../../css/style.css">
-    <title>Requests</title>
+    <title>Accounts</title>
 </head>
 
 <body>
@@ -49,6 +50,25 @@
             <div class="main">
                 <div id="msg" class="msg"></div>
                 <h3 class="title">Staff Accounts</h3>
+                <div class="form-card">
+                    <h1 class="title">Create Staff Account</h1>
+                    <form id="accountForm">
+                        <div class="input-area">
+                            <input type="text" name="staffId" id="staffId" placeholder="Staff id" required>
+                        </div>
+                        <div class="input-area">
+                            <input type="text" name="firstName" id="firstName" placeholder="First Name" required>
+                        </div>
+                        <div class="input-area">
+                            <input type="text" name="lastName" id="lastName" placeholder="Last Name" required>
+                        </div>
+                        <div class="input-area">
+                            <input type="password" name="password" id="password" placeholder="Password" required>
+                        </div>
+                        <br />
+                        <button id="btn-login" type="submit" class="btn">submit</button>
+                    </form>
+                </div>
             </div>
         </main>
         <footer>
@@ -67,4 +87,5 @@
 </script>
 <script src="../../js/api.js"></script>
 <script src="../../js/ui.js"></script>
+<script src="./js/add.js"></script>
 </html>
