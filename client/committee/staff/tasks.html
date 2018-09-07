@@ -62,6 +62,30 @@
             <!-- Main content -->
             <div class="main">
                 <div id="msg" class="msg"></div>
+                <div class="form-card">
+                    <h1 class="title">Add Task</h1>
+                    <form id="taskForm">
+                        <div class="input-area">
+                            <input type="text" name="name" id="name" placeholder="Task Name" required>
+                        </div>
+                        <div class="input-area">
+                            <input type="text" name="description" id="description" placeholder="Task Description"
+                                required>
+                        </div>
+                        <div class="input-area">
+                            <input type="date" name="date" id="date" placeholder="Due Date" required>
+                            Due Date
+                        </div>
+                        <br />
+                        <button id="btn-submit" type="submit" class="btn">add</button>
+                    </form>
+                </div>
+                <div id="task-collection" class="collection">
+                    <li class="collection-header">
+                        <span>name</span>
+                        <span>description</span>
+                    </li>
+                </div>
             </div>
         </main>
         <footer>
@@ -81,5 +105,5 @@
 <script src="../../js/api.js"></script>
 <script src="../../js/ui.js"></script>
 <script src="./js/tasks.js"></script>
-</html>
 
+</html>

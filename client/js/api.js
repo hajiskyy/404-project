@@ -156,4 +156,28 @@ class Api {
     return data;
   }
 
+  async addTask(task) {
+    const url = 'http://localhost/404/server/api/tasks/create.php';
+    // send request
+    let res = await fetch(url, {method: "POST", body: JSON.stringify({...task}) });
+    let data = await res.json();
+    return data;
+  }
+
+  async updateTask(task){
+    const url = 'http://localhost/404/server/api/tasks/update.php';
+    // send request
+    let res = await fetch(url, {method: "POST", body: JSON.stringify({...task}) });
+    let data = await res.json();
+    return data;
+  }
+
+  async deleteTask(id){
+    const url = 'http://localhost/404/server/api/tasks/delete.php';
+    // send request
+    let res = await fetch(url, {method: "POST", body: JSON.stringify({id: id}) });
+    let data = await res.json();
+    return data;
+  }
+
 }
