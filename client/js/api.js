@@ -120,4 +120,40 @@ class Api {
     return data;
   }
 
+  //get students
+  async getRegisteredStudents(){
+    const url = 'http://localhost/404/server/api/students/registered.php';
+    // fetch data tasks
+    let res = await fetch(url);
+    let data = await res.json();
+    return data;
+  }
+
+  //get attendance details
+  async getAttendance(){
+    const url = 'http://localhost/404/server/api/attendance/all.php';
+    // fetch data tasks
+    let res = await fetch(url);
+    let data = await res.json();
+    return data;
+  }
+
+  // set an attendance
+  async setAttendance(attendace){
+    const url = 'http://localhost/404/server/api/attendance/put.php';
+    // send request
+    let res = await fetch(url, {method: "POST", body: JSON.stringify({...attendace}) });
+    let data = await res.json();
+    return data;
+  }
+
+  //delete attendace
+  async deleteAttendance(attendance){
+    const url = 'http://localhost/404/server/api/attendance/delete.php';
+    // send request
+    let res = await fetch(url, {method: "POST", body: JSON.stringify({...attendance}) });
+    let data = await res.json();
+    return data;
+  }
+
 }

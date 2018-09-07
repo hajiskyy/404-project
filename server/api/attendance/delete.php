@@ -22,10 +22,10 @@ $attendance->advisorId = $data->advisor_id;
 $attendance->week = $data->week;
 $attendance->attended = 1;
 
-if($attendance->put()){
+if($attendance->delete()){
     echo json_encode(array(
         "status" => "ok",
-        "msg" => "Attendace Saved"
+        "msg" => "Attendace Removed"
     ));
 } else {
     echo json_encode(array(

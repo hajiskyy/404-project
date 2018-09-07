@@ -56,6 +56,46 @@ class Attendance {
 
     }
 
+    // delete attendance
+    public function delete(){
+        //query
+        $query = "INSERT INTO $this->table
+        SET
+            id = :id,
+            student_id = :student_id, 
+            advisor_id = :advisor_id ,
+            attended = :attended, 
+            week = :week
+        ON DUPLICATE KEY UPDATE attended = attended - 1,
+        week = week - 1
+        ";
+    
+        $stmt = $this->conn->prepare($query);
+
+        //  sanitize data
+        $this->id = htmlspecialchars(strip_tags($this->id));
+        $this->studentId = htmlspecialchars(strip_tags($this->studentId));
+        $this->advisorId = htmlspecialchars(strip_tags($this->advisorId));
+        $this->attended = htmlspecialchars(strip_tags($this->attended));
+        $this->week = htmlspecialchars(strip_tags($this->week));
+    
+        // bind parameter
+        $stmt->bindParam(':id', $this->id);
+        $stmt->bindParam(':student_id',$this->studentId);
+        $stmt->bindParam(':advisor_id',$this->advisorId);
+        $stmt->bindParam(':attended', $this->attended);
+        $stmt->bindParam(':week', $this->week);
+    
+    
+        // return true if query is successful
+        if($stmt->execute()){
+            return true;
+        } else {
+            printf("Error %s \n", $stmt->error);
+        }
+                    
+    }
+
     public function getAll(){
         //query
         $query = "SELECT * FROM $this->table";

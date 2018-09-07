@@ -54,7 +54,7 @@ class Guard {
 
   //get staff id
   getstaffId() {
-    const staff = JSON.parse(localStorage.getItem("staff_auth"));
+    const staff = JSON.parse(localStorage.getItem("committee_auth"));
     return staff.id;
   }
   // get student Name
@@ -69,7 +69,7 @@ class Guard {
   }
   // Get Staff Name
   getStaffName(){
-    const staff = JSON.parse(localStorage.getItem("staff_auth"));
+    const staff = JSON.parse(localStorage.getItem("committee_auth"));
     return staff.name;
   }
 }

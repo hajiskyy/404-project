@@ -78,6 +78,14 @@
             return $stmt;
         }
 
+        // get regitsered students
+        public function getRegisteredStudents(){
+            $query = "SELECT * from $this->table WHERE registered = 1";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+
         // register student
         public function register(){
                 $query = "INSERT INTO $this->table 
