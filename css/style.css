@@ -13,9 +13,8 @@ html {
   height: 100%;
   grid-template-areas:
     "nav"
-    "main"
-    "footer";
-  grid-template-rows: 60px 690px 47px;
+    "main";
+  grid-template-rows: 60px 1fr;
   grid-template-columns: 100%;
 }
 
@@ -77,7 +76,6 @@ nav .nav-logo {
 
 #page > main {
   grid-area: main;
-  /* overflow: hidden; */
 }
 
 .form-card {
