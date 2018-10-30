@@ -60,6 +60,16 @@ function putTasks(tasks){
   
 }
 
-function deletetask(id){
+async function deletetask(id){
     console.log(id);
+    let res = await api.deleteTask(id);
+    if(res.status == "error"){
+        ui.displayError(res.msg);
+    } else {
+        ui.dispalySuccess(res.msg);
+    }
+
+    setTimeout(() => {
+        location.reload()
+    }, 1000);
 }

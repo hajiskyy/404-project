@@ -42,6 +42,15 @@ class Api {
     return data;
   }
 
+    // delete tasks
+    async deleteTasks(id) {
+      const url = "http://localhost/404/server/api/tasks/delete.php";
+      // fetch tasks
+      let res = await fetch(url, {method: "DELETE", body: JSON.stringify({id: id}) });
+      let data = await res.json();
+      return data;
+    }
+
   // get single task
   async getSingleTask(id) {
     const url = `http://localhost/404/server/api/tasks/single.php?id=${id}`;
